@@ -160,7 +160,6 @@ Because the backend uses Render's free tier, the API service may take a few seco
 
 ## Screenshots
 
-Add screenshots here after deployment.
 
 ```text
 /screenshots/dashboard.png
