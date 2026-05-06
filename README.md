@@ -160,6 +160,12 @@ Because the backend uses Render's free tier, the API service may take a few seco
 
 ## Screenshots
 
+### Pre-Development Sketch
+
+![Sketch Screenshot](./screenshots/brainstorm.png)
+
+---
+
 ### Dashboard
 
 ![Dashboard Screenshot](./screenshots/dashboard.png)
