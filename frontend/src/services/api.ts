@@ -3,7 +3,7 @@ import {
   ProviderConfig,
 } from "../types/provider";
 
-const API_URL = "https://pulsewatch-backend.onrender.com";
+const API_URL = "https://pulsewatch-pq6v.onrender.com";
 
 export async function fetchAnalytics(
   provider: ProviderConfig
