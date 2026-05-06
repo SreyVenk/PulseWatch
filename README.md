@@ -160,13 +160,15 @@ Because the backend uses Render's free tier, the API service may take a few seco
 
 ## Screenshots
 
+### Dashboard
 
-```text
-/screenshots/dashboard.png
-/screenshots/monitoring.png
-```
+![Dashboard Screenshot](./screenshots/dashboard.png)
 
 ---
+
+### Monitoring
+
+![Monitoring Screenshot](./screenshots/monitoring.png)
 
 ## Motivation
 
