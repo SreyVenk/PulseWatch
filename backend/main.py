@@ -9,7 +9,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
     "http://localhost:3000",
-    "https://pulsewatch-pq6v.onrender.com",
+    "https://pulse-watch-delta.vercel.app",
 ],
     allow_credentials=True,
     allow_methods=["*"],
