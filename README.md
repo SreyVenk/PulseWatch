@@ -6,6 +6,24 @@ The project was built to explore monitoring architecture concepts such as pollin
 
 ---
 
+## Screenshots
+
+### Pre-Development Sketch
+
+![Sketch Screenshot](./screenshots/brainstorm.png)
+
+---
+
+### Dashboard
+
+![Dashboard Screenshot](./screenshots/dashboard.png)
+
+---
+
+### Monitoring
+
+![Monitoring Screenshot](./screenshots/monitoring.png)
+
 ## Features
 
 - Real-time API monitoring dashboard
@@ -158,23 +176,7 @@ Because the backend uses Render's free tier, the API service may take a few seco
 
 ---
 
-## Screenshots
 
-### Pre-Development Sketch
-
-![Sketch Screenshot](./screenshots/brainstorm.png)
-
----
-
-### Dashboard
-
-![Dashboard Screenshot](./screenshots/dashboard.png)
-
----
-
-### Monitoring
-
-![Monitoring Screenshot](./screenshots/monitoring.png)
 
 ## Motivation
 
