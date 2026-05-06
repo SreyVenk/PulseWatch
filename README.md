@@ -1,156 +1,174 @@
-mkdir pulsewatch
+# PulseWatch
 
-cd pulsewatch
+PulseWatch is a lightweight observability dashboard for monitoring API and LLM provider usage in real time. It tracks latency, request activity, uptime health, and quota-related metrics across multiple providers through a unified dashboard interface.
 
-# ROOT FILES
-New-Item README.md -ItemType File
-New-Item .gitignore -ItemType File
-New-Item docker-compose.yml -ItemType File
+The project was built to explore monitoring architecture concepts such as polling systems, provider abstraction, real-time analytics visualization, and frontend/backend deployment pipelines.
 
-# =========================
-# BACKEND
-# =========================
+---
 
-mkdir backend
+## Features
+
+- Real-time API monitoring dashboard
+- GitHub API integration with live rate limit tracking
+- Generic REST endpoint monitoring support
+- Latency visualization with rolling time-series charts
+- Live polling architecture
+- Multi-provider abstraction system
+- Local browser persistence using localStorage
+- Fully deployed frontend/backend architecture
+- Responsive dark-mode UI
+
+---
+
+## Supported Providers
+
+### Native Integrations
+- GitHub
+
+### Generic REST Monitoring
+Supports monitoring arbitrary REST endpoints such as:
+- PokéAPI
+- JSONPlaceholder
+- Cat Facts API
+- Internal APIs
+- Custom endpoints
+
+---
+
+## Architecture
+
+```text
+Frontend (Next.js + TypeScript)
+        ↓
+Polling Requests
+        ↓
+FastAPI Backend
+        ↓
+Provider Abstraction Layer
+        ↓
+External APIs / Services
+```
+
+The frontend stores monitor configurations locally in the browser and periodically polls the backend for updated analytics data. The backend normalizes provider responses into a unified analytics format for visualization.
+
+---
+
+## Tech Stack
+
+### Frontend
+- Next.js
+- TypeScript
+- Recharts
+- CSS Modules
+
+### Backend
+- FastAPI
+- Python
+- Requests
+
+### Deployment
+- Vercel (frontend)
+- Render (backend)
+
+---
+
+## Project Structure
+
+```text
+pulsewatch/
+│
+├── backend/
+│   ├── providers/
+│   ├── main.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── services/
+│   │   └── types/
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## Running Locally
+
+### Backend
+
+```bash
 cd backend
 
-New-Item requirements.txt -ItemType File
-New-Item pulsewatch.db -ItemType File
+pip install -r requirements.txt
 
-mkdir app
-cd app
+uvicorn main:app --reload
+```
 
-New-Item main.py -ItemType File
+Backend runs on:
 
-mkdir api
-cd api
+```text
+http://localhost:8000
+```
 
-New-Item provider_routes.py -ItemType File
-New-Item analytics_routes.py -ItemType File
+---
 
-cd ..
+### Frontend
 
-mkdir services
-cd services
-
-New-Item provider_service.py -ItemType File
-New-Item openai_service.py -ItemType File
-New-Item anthropic_service.py -ItemType File
-New-Item github_service.py -ItemType File
-New-Item stripe_service.py -ItemType File
-
-cd ..
-
-mkdir models
-cd models
-
-New-Item provider_models.py -ItemType File
-
-cd ..
-
-mkdir schemas
-cd schemas
-
-New-Item provider_schema.py -ItemType File
-
-cd ..
-
-mkdir core
-cd core
-
-New-Item config.py -ItemType File
-New-Item security.py -ItemType File
-
-cd ..
-
-mkdir utils
-cd utils
-
-New-Item mock_data.py -ItemType File
-
-cd ..
-cd ..
-cd ..
-
-# =========================
-# FRONTEND
-# =========================
-
-mkdir frontend
+```bash
 cd frontend
 
-mkdir src
-cd src
+npm install
 
-mkdir app
-cd app
+npm run dev
+```
 
-New-Item page.tsx -ItemType File
-New-Item layout.tsx -ItemType File
-New-Item globals.css -ItemType File
+Frontend runs on:
 
-mkdir dashboard
+```text
+http://localhost:3000
+```
 
-cd ..
+---
 
-mkdir components
-cd components
+## Deployment
 
-New-Item AddProvider.tsx -ItemType File
-New-Item AnalyticsCard.tsx -ItemType File
-New-Item HeroChart.tsx -ItemType File
-New-Item Sidebar.tsx -ItemType File
-New-Item ProviderList.tsx -ItemType File
-New-Item StatusBadge.tsx -ItemType File
+### Frontend
+Deployed on Vercel.
 
-cd ..
+### Backend
+Deployed on Render.
 
-mkdir services
-cd services
+Because the backend uses Render's free tier, the API service may take a few seconds to wake up after inactivity.
 
-New-Item api.ts -ItemType File
-New-Item storage.ts -ItemType File
+---
 
-cd ..
+## Future Improvements
 
-mkdir hooks
-cd hooks
+- Historical analytics persistence
+- Authentication system
+- Alert thresholds and notifications
+- WebSocket live streaming
+- Redis caching layer
+- Provider grouping and filtering
+- Usage forecasting
+- Prometheus/Grafana integrations
 
-New-Item useProviders.ts -ItemType File
+---
 
-cd ..
+## Screenshots
 
-mkdir types
-cd types
+Add screenshots here after deployment.
 
-New-Item provider.ts -ItemType File
+```text
+/screenshots/dashboard.png
+/screenshots/monitoring.png
+```
 
-cd ..
+---
 
-mkdir styles
-cd styles
+## Motivation
 
-New-Item dashboard.css -ItemType File
-
-cd ..
-cd ..
-
-New-Item package.json -ItemType File
-New-Item tsconfig.json -ItemType File
-
-cd ..
-
-# =========================
-# DOCS
-# =========================
-
-mkdir docs
-cd docs
-
-New-Item architecture.md -ItemType File
-New-Item roadmap.md -ItemType File
-
-cd ..
-
-Write-Host ""
-Write-Host "PulseWatch structure created successfully."
+Most personal observability dashboards either focus heavily on infrastructure monitoring or require significant setup overhead. The goal of PulseWatch was to create a lightweight monitoring layer that could quickly visualize API behavior and provider health through a simple unified interface.
